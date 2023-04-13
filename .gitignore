@@ -2,3 +2,6 @@
 
 # Remove Trial
 /trial
+
+# Remove single-spa-demo
+/single-spa-demo
