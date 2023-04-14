@@ -11,8 +11,8 @@ pipeline {
           // sh 'cd root'
           // sh 'npm run build'
           // sh 'cd ..'
-          sh 'aws s3 sync single spa deploy/react/dist s3://abhay-soni-spa-2/@root/react'
-          sh 'aws s3 sync single spa deploy/root/dist s3://abhay-soni-spa-2/@root/root-config'
+          sh 'aws s3 sync single-spa-deploy/react/dist s3://abhay-soni-spa-2/@root/react'
+          sh 'aws s3 sync single-spa-deploy/root/dist s3://abhay-soni-spa-2/@root/root-config'
           sh 'aws s3 sync importmap.json s3://abhay-soni-spa-2/'
         }
       }
