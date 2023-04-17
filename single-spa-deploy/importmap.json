@@ -1,7 +1,0 @@
-{
-    "imports": {
-      "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-      "@root/root-config": "https://abhay-soni-spa-2.s3.ap-south-1.amazonaws.com/%40root/root-config/root-root-config.js",
-      "@root/react":"https://abhay-soni-spa-2.s3.ap-south-1.amazonaws.com/%40root/react/root-react.js"
-    }
-}
