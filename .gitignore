@@ -5,3 +5,6 @@
 
 # Remove single-spa-demo
 /single-spa-demo
+
+# node_modules
+node_modules
