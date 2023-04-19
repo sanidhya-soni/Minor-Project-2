@@ -3,37 +3,15 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
 import PasswordStrengthBar from 'react-password-strength-bar';
-
 const Signup = () => {
 	const [data, setData] = useState({
-		userName:"",
+		username:"",
 		secret: "",
 		email: "",
-		firstName: "",
-		lastName: "",
-		
-		
+		first_name: "",
+		last_name: "",
 	});
-	//
-	// var data = '{
-	// 	"username": "bob_baker",
-	// 	"secret": "secret-123-jBj02",
-	// 	"email": "b_baker@mail.com",
-	// 	"first_name": "Bob",
-	// 	"last_name": "Baker",
-	// 	"custom_json": {"fav_game": "Candy Crush", "high_score": 2002}
-	// }';
 	
-	
-	
-	// axios(config)
-	// .then(function (response) {
-	// 	console.log(JSON.stringify(response.data));
-	// })
-	// .catch(function (error) {
-	// 	console.log(error);
-	// });
-	// //
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
 
@@ -43,10 +21,31 @@ const Signup = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		console.log(data);
+		
+		var config = {
+			method: 'post',
+			url: 'https://api.chatengine.io/users/',
+			headers: {
+				'PRIVATE-KEY': '8901e435-bd35-4e3e-9583-1d50fdd7ceca'
+			},
+			data : data
+		};
+		
+		axios(config)
+		.then(function (response) {
+			console.log(JSON.stringify(response.data));
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
+
+		//
+		alert(`Submitted form with name ${data.username} and email ${data.email}`);
 		try {
 			const url = "http://localhost:5001/api/users";
 			const { data: res } = await axios.post(url, data);
-			console.log(data+"iii");
+			
 			navigate("/login");
 			
 
@@ -80,27 +79,27 @@ const Signup = () => {
 						<input
 							type="text"
 							placeholder="User Name"
-							name="userName"
+							name="username"
 							onChange={handleChange}
-							value={data.userName}
+							value={data.username}
 							required
 							className={styles.input}
 						/>
 						<input
 							type="text"
 							placeholder="First Name"
-							name="firstName"
+							name="first_name"
 							onChange={handleChange}
-							value={data.firstName}
+							value={data.first_name}
 							required
 							className={styles.input}
 						/>
 						<input
 							type="text"
 							placeholder="Last Name"
-							name="lastName"
+							name="last_name"
 							onChange={handleChange}
-							value={data.lastName}
+							value={data.last_name}
 							required
 							className={styles.input}
 						/>
@@ -115,7 +114,7 @@ const Signup = () => {
 						/>
 
 						<input
-							type="secret"
+							type="password"
 							placeholder="Password"
 							name="secret"
 							onChange={handleChange}

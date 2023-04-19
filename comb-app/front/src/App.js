@@ -8,7 +8,6 @@ import Login from "./component/Login";
 import User1 from './component/User1';
 import User2 from './component/User2';
 
-
 const UserType = {
   Public: "public",
   Basic: "Basic",
@@ -29,7 +28,7 @@ function App() {
         <Route path="/login" exact element={<Login />} />
         <Route path="/getStarted" element={<Navigate replace to="/login" />} />
         <Route path="/user1" element={<BasicAccess><User1 /></BasicAccess>}></Route>
-        <Route path="/user2" element={<User2 />}></Route>
+        <Route path="/user2" element={<User2/>}></Route>
         <Route path="*" element={<div>Page Not Found</div>}></Route>
       </Routes>
     </>

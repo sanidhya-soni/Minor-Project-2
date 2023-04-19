@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { User, validate } = require("../models/user");
 const bcrypt = require("bcrypt");
-const axios = require('axios')
 router.post("/", async (req, res) => {
 	try {
 		const { error } = validate(req.body);
@@ -9,7 +8,7 @@ router.post("/", async (req, res) => {
 			return res.status(400).send({ message: error.details[0].message });
 
 		const user = await User.findOne({ email: req.body.email });
-		const userName2 = await User.findOne({ userName: req.body.userName });
+		const userName2 = await User.findOne({ username: req.body.username });
 		if (user)
 			return res
 				.status(409)
@@ -18,22 +17,7 @@ router.post("/", async (req, res) => {
 			return res
 				.status(409)
 				.send({ message: "User with given user name already Exist!" });
-		var config = {
-			method: 'post',
-			url: 'https://api.chatengine.io/users/',
-			headers: {
-				'PRIVATE-KEY': '8901e435-bd35-4e3e-9583-1d50fdd7ceca'
-			},
-			data: req.body
-		};
-
-		axios(config)
-			.then(function (response) {
-				console.log(JSON.stringify(response.data));
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		console.log(req.body);	
 		const salt = await bcrypt.genSalt(Number(process.env.SALT));
 		const hashPassword = await bcrypt.hash(req.body.secret, salt);
 

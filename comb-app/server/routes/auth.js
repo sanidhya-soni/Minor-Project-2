@@ -10,7 +10,6 @@ router.post("/", async (req, res) => {
 			return res.status(400).send({ message: error.details[0].message });
 
 		const user = await User.findOne({ email: req.body.email });
-		
 		if (!user)
 			return res.status(401).send({ message: "Invalid Email or Password" });
 
@@ -18,6 +17,8 @@ router.post("/", async (req, res) => {
 			req.body.secret,
 			user.secret
 		);
+
+		console.log(user);
 		if (!validPassword)
 			return res.status(401).send({ message: "Invalid Email or Password" });
 
@@ -32,6 +33,7 @@ const validate = (data) => {
 	const schema = Joi.object({
 		email: Joi.string().email().required().label("Email"),
 		secret: Joi.string().required().label("Password"),
+		username: Joi.string().required().label("username"),
 	});
 	return schema.validate(data);
 };

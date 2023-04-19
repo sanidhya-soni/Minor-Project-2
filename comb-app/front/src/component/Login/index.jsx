@@ -2,23 +2,28 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-//
-
-const Login = (props) => {
-	const [data, setData] = useState({ email: "", secret: "" });
+//import Main from '../Main';
+// import React, { createContext } from 'react';
+// export const MyContext = createContext();
+const Login = () => {
+	const [data, setData] = useState({ email: "", secret: "", username: "" });
 	const [error, setError] = useState("");
-
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
 	};
 	
+	//alert(`hi${data.username} having ${data.secret}`);
+	//const email = data.email;
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		// <Main username={username} secret={secret} />
 		try {
 			const url = "http://localhost:5001/api/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
-			
+			localStorage.setItem("username", data.username);
+			localStorage.setItem("secret", data.secret);
 			window.location = "/welcome";
 		} catch (error) {
 			if (
@@ -37,6 +42,15 @@ const Login = (props) => {
 				<div className={styles.left}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
 						<h1>Login to Your Account</h1>
+						<input
+							type="text"
+							placeholder="username"
+							name="username"
+							onChange={handleChange}
+							value={data.username}
+							required
+							className={styles.input}
+						/>
 						<input
 							type="email"
 							placeholder="Email"
@@ -68,6 +82,7 @@ const Login = (props) => {
 							Sing Up
 						</button>
 					</Link>
+
 				</div>
 			</div>
 		</div>
