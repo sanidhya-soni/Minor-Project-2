@@ -27,7 +27,7 @@ const Signup = () => {
 			method: 'post',
 			url: 'https://api.chatengine.io/users/',
 			headers: {
-				'PRIVATE-KEY': '8901e435-bd35-4e3e-9583-1d50fdd7ceca'
+				'PRIVATE-KEY': '898c5677-7146-4adb-b7b3-b3c1f196df3d'
 			},
 			data : data
 		};
@@ -75,7 +75,6 @@ const Signup = () => {
 				</div>
 				<div className={styles.right}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Create Account</h1>
 						<input
 							type="text"
 							placeholder="User Name"

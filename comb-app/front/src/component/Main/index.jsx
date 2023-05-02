@@ -20,7 +20,7 @@ const secret = localStorage.getItem("secret");
 
 			<div style={{ height: "91vh", width: "99.9vw" }}>
 				<PrettyChatWindow
-					projectId='d32c7841-897d-4cf5-8a3b-671b1798d127'
+					projectId='7a00d300-542c-4ee0-a768-a02dab5e2a12'
 					username={username}
         			secret={secret}
 					style={{ height: "100vh" }}
