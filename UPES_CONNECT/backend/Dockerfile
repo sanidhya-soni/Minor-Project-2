@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Expose the port that the application will listen on
-EXPOSE 3000
+EXPOSE 5001
 
 # Set environment variables
 ENV NODE_ENV production

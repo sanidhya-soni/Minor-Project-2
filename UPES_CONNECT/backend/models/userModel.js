@@ -45,28 +45,12 @@ class UserModel {
     }
   }
 
-  // static async getUserByUsername(username) {
-  //   const params = {
-  //     TableName: 'upes-colab',
-  //     IndexName: 'usernameIndex',
-  //     KeyConditionExpression: 'username = :username',
-  //     ExpressionAttributeValues: {
-  //       ':username': { S: username },
-  //     },
-  //   };
-  //   const result = await client.send(new QueryCommand(params));
-  //   return result.Items[0];
-  // }
-
   static async getUserByToken(token) {
     try {
-      // Verify JWT token
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       
-      // Retrieve user data based on token
       const user = await this.getUserByUsername(decoded.username);
       
-      // Check if token matches user
       if (user && user.userId === decoded.userId) {
         return user;
       } else {
