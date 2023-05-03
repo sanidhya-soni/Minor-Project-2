@@ -14,12 +14,13 @@ RUN npm install
 COPY . .
 
 # Expose the port that the application will listen on
-EXPOSE 5002
+EXPOSE 5001
 
 # Set environment variables
 ENV NODE_ENV production
 ENV AWS_ACCESS_KEY_ID <AWS_ACCESS_KEY_ID>
 ENV AWS_SECRET_ACCESS_KEY <AWS_SECRET_ACCESS_KEY>
 ENV AWS_DEFAULT_REGION <AWS_DEFAULT_REGION>
+
 # Start the application
 CMD ["npm", "start"]

@@ -43,7 +43,7 @@ const Signup = () => {
 		//
 		alert(`Submitted form with name ${data.username} and email ${data.email}`);
 		try {
-			const url = "http://localhost:5001/api/users";
+			const url = "http://15.206.147.75:5001/api/users";
 			const { data: res } = await axios.post(url, data);
 			
 			navigate("/login");
