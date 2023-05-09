@@ -22,6 +22,7 @@ pipeline {
                     credentialsId: 'AlmostAdminAWS'
                 ]]) {
                     dir('UPES_CONNECT/micro-backend/'){
+                        sh "ls"
                         sh "docker-compose build"
                         sh "docker tag ${SERVICE_NAME}:${TAG} ${ECR_REGISTRY}/${SERVICE_NAME}:${TAG}"
                         sh "docker push ${ECR_REGISTRY}/${SERVICE_NAME}:${TAG}"
