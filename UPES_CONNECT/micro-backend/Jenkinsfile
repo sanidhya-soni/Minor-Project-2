@@ -22,8 +22,8 @@ pipeline {
                     credentialsId: 'AlmostAdminAWS'
                 ]]) {
                     sh "docker-compose -f ${DOCKER_COMPOSE_FILE} build"
-                    sh "docker tag ${ECR_REGISTRY}/${IMAGE_NAME}:${TAG} ${ECR_REGISTRY}/${IMAGE_NAME}:${BUILD_NUMBER}"
-                    sh "docker push ${ECR_REGISTRY}/${IMAGE_NAME}:${BUILD_NUMBER}"
+                    sh "docker tag ${SERVICE_NAME}:${TAG} ${ECR_REGISTRY}/${SERVICE_NAME}:${TAG}"
+                    sh "docker push ${ECR_REGISTRY}/${SERVICE_NAME}:${TAG}"
                 }
             }
         }
