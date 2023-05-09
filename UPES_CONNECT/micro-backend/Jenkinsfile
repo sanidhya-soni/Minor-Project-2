@@ -22,6 +22,7 @@ pipeline {
                     credentialsId: 'AlmostAdminAWS'
                 ]]) {
                     sh "cd UPES_CONNECT"
+                    sh "ls"
                     sh "cd micro-backend"
                     sh "ls"
                     sh "docker-compose build"
