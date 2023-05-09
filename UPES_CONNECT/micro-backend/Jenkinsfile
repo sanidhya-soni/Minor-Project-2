@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_REGION = 'ap-south-1'
+        ECR_REGISTRY = 'upes-colab'
+        DOCKER_COMPOSE_FILE = 'docker-compose.yml'
+        TAG = 'latest'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build and Push Image') {
+            steps {
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'AlmostAdminAWS'
+                ]]) {
+                    sh "docker-compose -f ${DOCKER_COMPOSE_FILE} build"
+                    sh "docker tag ${ECR_REGISTRY}/${IMAGE_NAME}:${TAG} ${ECR_REGISTRY}/${IMAGE_NAME}:${BUILD_NUMBER}"
+                    sh "docker push ${ECR_REGISTRY}/${IMAGE_NAME}:${BUILD_NUMBER}"
+                }
+            }
+        }
+    }
+}
