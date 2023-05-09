@@ -25,10 +25,10 @@ pipeline {
                     dir('UPES_CONNECT/micro-backend/'){
                         sh "ls"
                         sh "docker-compose -f ${DOCKER_COMPOSE_FILE} build"
-                        sh "docker tag micro_backend_signupapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro_backend_signupapi"
-                        sh "docker tag micro_backend_loginapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro_backend_loginapi"
-                        sh "docker push 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro_backend_signupapi"
-                        sh "docker push 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro_backend_loginapi"
+                        sh "docker tag micro_backend_signupapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_signupapi"
+                        sh "docker tag micro_backend_loginapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_loginapi"
+                        sh "docker push 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_signupapi"
+                        sh "docker push 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_loginapi"
                     }
                 }
             }
