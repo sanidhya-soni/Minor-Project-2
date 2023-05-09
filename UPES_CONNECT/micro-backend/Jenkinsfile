@@ -18,10 +18,7 @@ pipeline {
 
         stage('Build and Push Image') {
             steps {
-                withCredentials([[
-                    $class: 'AmazonWebServicesCredentialsBinding',
-                    credentialsId: 'AlmostAdminAWS'
-                ]]) {
+                withAWS(credentials: 'AlmostAdminAWS') {
                     dir('UPES_CONNECT/micro-backend/'){
                         sh "ls"
                         sh "docker-compose -f ${DOCKER_COMPOSE_FILE} build"
