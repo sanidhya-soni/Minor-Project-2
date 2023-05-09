@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = 'ap-south-1'
         ECR_REGISTRY = 'upes-colab'
-        DOCKER_COMPOSE_FILE = 'docker-compose.yml'
+        DOCKER_COMPOSE_FILE = 'UPES_CONNECT/micro-backend/docker-compose.yml'
         TAG = 'latest'
     }
 
