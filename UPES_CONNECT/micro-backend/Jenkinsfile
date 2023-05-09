@@ -5,6 +5,7 @@ pipeline {
         AWS_DEFAULT_REGION = 'ap-south-1'
         ECR_REGISTRY = 'upes-colab'
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'
+        SERVICE_NAME = 'back-end'
         TAG = 'latest'
     }
 
