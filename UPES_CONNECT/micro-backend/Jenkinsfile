@@ -21,7 +21,7 @@ pipeline {
                     $class: 'AmazonWebServicesCredentialsBinding',
                     credentialsId: 'AlmostAdminAWS'
                 ]]) {
-                    sh "docker-compose -f ${DOCKER_COMPOSE_FILE} build"
+                    sh "docker-compose ${DOCKER_COMPOSE_FILE} build"
                     sh "docker tag ${SERVICE_NAME}:${TAG} ${ECR_REGISTRY}/${SERVICE_NAME}:${TAG}"
                     sh "docker push ${ECR_REGISTRY}/${SERVICE_NAME}:${TAG}"
                 }
