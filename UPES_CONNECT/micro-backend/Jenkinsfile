@@ -27,7 +27,7 @@ pipeline {
                     dir('UPES_CONNECT/micro-backend/'){
                         sh "ls"
                         sh "docker --version"
-                        sh "service docker start"
+                        sh "sudo service docker start"
                         sh "docker-compose -f ${DOCKER_COMPOSE_FILE} build"
                         sh "docker tag micro-backend_signupapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend-signupapi"
                         sh "docker tag micro-backend_loginapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend-loginapi"
