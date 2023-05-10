@@ -25,12 +25,6 @@ pipeline {
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     dir('UPES_CONNECT/micro-backend/'){
-                        sh 'apt-get update'
-                        sh 'apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common'
-                        sh 'curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -'
-                        sh 'add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"'
-                        sh 'apt-get update'
-                        sh 'apt-get install -y docker-ce docker-ce-cli containerd.io'
                         sh 'service docker start'
                         sh "docker-compose -f ${DOCKER_COMPOSE_FILE} build"
                         sh "docker tag micro-backend_signupapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend-signupapi"
