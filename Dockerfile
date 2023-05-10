@@ -47,6 +47,7 @@ RUN apt-get update && \
         docker-ce \
         docker-ce-cli \
         containerd.io && \
+    usermod -aG docker jenkins && \
     curl -sSL https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64 -o /usr/local/bin/docker-compose && \
     chmod +x /usr/local/bin/docker-compose
 
