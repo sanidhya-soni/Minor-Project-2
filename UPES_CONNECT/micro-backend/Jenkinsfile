@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_DEFAULT_REGION = 'ap-south-1'
         ECR_REGISTRY = '373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab'
-        DOCKER_COMPOSE_FILE = 'docker-compose.yml'
+        DOCKER_COMPOSE_FILE = 'docker-compose'
         SERVICE_NAME = 'micro-backend'
         TAG = 'latest'
     }
@@ -27,8 +27,8 @@ pipeline {
                     dir('UPES_CONNECT/micro-backend/'){
                         sh "ls"
                         sh "docker-compose -f ${DOCKER_COMPOSE_FILE} build"
-                        sh "docker tag micro-backend_signupapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_signupapi"
-                        sh "docker tag micro-backend_loginapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_loginapi"
+                        sh "docker tag micro-backend_signupapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend-signupapi"
+                        sh "docker tag micro-backend_loginapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend-loginapi"
                         sh "aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${ECR_REGISTRY}"
                         sh "docker push 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_signupapi"
                         sh "docker push 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_loginapi"
