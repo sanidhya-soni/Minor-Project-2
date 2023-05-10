@@ -53,6 +53,6 @@ RUN apt-get update && \
 # Switch back to Jenkins user
 USER jenkins
 
-# Expose the Jenkins web interface port
+# Expose the Jenkins web interface port j
 EXPOSE 8080
 
