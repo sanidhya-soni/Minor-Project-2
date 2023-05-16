@@ -25,6 +25,7 @@ pipeline {
                     secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                 ]]) {
                     dir('UPES_CONNECT/micro-backend/'){
+                        sh "sudo su"
                         sh "docker-compose -f ${DOCKER_COMPOSE_FILE} build"
                         sh "docker tag micro-backend_signupapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_signupapi"
                         sh "docker tag micro-backend_loginapi:latest 373425558498.dkr.ecr.ap-south-1.amazonaws.com/upes-colab:micro-backend_loginapi"
