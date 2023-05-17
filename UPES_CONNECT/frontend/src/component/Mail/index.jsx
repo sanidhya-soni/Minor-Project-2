@@ -11,7 +11,7 @@ const Mail = () =>{
   const handleSubmit = (event) => {
     console.log("hgchgcchc")
     event.preventDefault();
-    axios.post('http://3.111.218.250:3001/send-email', { to, subject, text })
+    axios.post('http://3.111.218.250:5003/send-email', { to, subject, text })
       .then((response) => {
         console.log(response.data);
         alert(response.data);
