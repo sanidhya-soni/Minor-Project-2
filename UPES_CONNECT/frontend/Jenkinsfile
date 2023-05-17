@@ -7,12 +7,13 @@ pipeline {
         // Checkout your React project from version control
         checkout scm
         
-        dir('UPES_CONNECT/frontend/')
-        // Install project dependencies
-        sh 'npm install'
-        
-        // Build the React app
-        sh 'npm run build'
+        dir('UPES_CONNECT/frontend/') {
+            // Install project dependencies
+            sh 'npm install'
+            
+            // Build the React app
+            sh 'npm run build'
+        }
       }
     }
     
