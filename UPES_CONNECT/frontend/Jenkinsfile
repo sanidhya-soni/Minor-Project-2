@@ -9,7 +9,7 @@ pipeline {
         
         dir('UPES_CONNECT/frontend/') {
             // Install project dependencies
-            sh 'npm install'
+            sh 'npm install --legacy-peer-deps'
             
             // Build the React app
             sh 'npm run build'
