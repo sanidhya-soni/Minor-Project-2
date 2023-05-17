@@ -1,0 +1,95 @@
+body{
+    background-color: #15202b;
+  }
+  .container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+  }
+  
+  .card {
+    background-color: #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .left {
+    width: 25vw;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  
+  .left img {
+    width: inherit;
+    object-fit: cover;
+    transform: scale(2.3);
+  }
+  
+  .right .contact {
+    display: flex;
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+  
+  .form, .address {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0 0;
+  }
+  
+  .form input, textarea {
+    width: 100%;
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: 2px solid #000;
+    padding: 10px 0;
+    margin: 5px 0;
+  }
+  
+  
+  h4 {
+    margin-bottom: 5px;
+  }
+  .submit{
+    background-color: #ffe000;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    width: min-content;
+    padding: 15px;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  @media screen and (max-width: 700px) {
+    .card {
+      flex-direction: column;
+    }
+    
+    .left {
+      width: 60vw;
+      height: 40vh;
+    }
+  }
+  
+  @media screen and (max-width: 350px) {
+    .container {
+      overflow: hidden;
+    }
+    .left {
+      height: 20vh;
+    }
+    .contact {
+      flex-direction: column;
+    }
+  }

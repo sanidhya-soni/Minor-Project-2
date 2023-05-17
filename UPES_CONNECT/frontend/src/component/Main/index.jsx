@@ -1,5 +1,6 @@
 import styles from "./styles.module.css";
 import { PrettyChatWindow } from "react-chat-engine-pretty";
+import { Link } from "react-router-dom";
 
 const Main = () => {
 	const handleLogout = () => {
@@ -7,12 +8,15 @@ const Main = () => {
 		window.location = "/";
 	};
 	const username = localStorage.getItem("username");
-const secret = localStorage.getItem("secret");
+	const secret = localStorage.getItem("secret");
 	// alert(secret);
 	return (
 		<div className={styles.main_container}>
 			<nav className={styles.navbar}>
 				<h1>connect</h1>
+				<Link to={"/mail"}>
+					<h1>Mail</h1>
+				</Link>
 				<button className={styles.white_btn} onClick={handleLogout}>
 					Logout
 				</button>
@@ -20,7 +24,7 @@ const secret = localStorage.getItem("secret");
 
 			<div style={{ height: "91vh", width: "99.9vw" }}>
 				<PrettyChatWindow
-					projectId='7a00d300-542c-4ee0-a768-a02dab5e2a12'
+					projectId='eb286613-1a01-48d0-8f1b-a8f07329b150'
 					username={username}
         			secret={secret}
 					style={{ height: "100vh" }}
