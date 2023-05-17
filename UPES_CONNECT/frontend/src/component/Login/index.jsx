@@ -19,7 +19,7 @@ const Login = () => {
 
 		// <Main username={username} secret={secret} />
 		try {
-			const url = "http://3.111.218.250:5002/api/auth";
+			const url = "http://13.233.38.130:5002/api/auth";
 			const { data: res } = await axios.post(url, data);
 			localStorage.setItem("token", res.data);
 			localStorage.setItem("username", data.username);

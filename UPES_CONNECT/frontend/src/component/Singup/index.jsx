@@ -43,7 +43,7 @@ const Signup = () => {
 		//
 		alert(`Submitted form with name ${data.username} and email ${data.email}`);
 		try {
-			const url = "http://3.111.218.250:5001/api/users";
+			const url = "http://13.233.38.130:5001/api/users";
 			const { data: res } = await axios.post(url, data);
 			
 			navigate("/login");
