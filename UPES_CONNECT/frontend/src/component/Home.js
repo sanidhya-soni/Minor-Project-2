@@ -15,7 +15,7 @@ function Home() {
       <Parallax pages={6} >
           <ParallaxLayer offset={0} speed={0.5}>
           <div className='model'>
-          <iframe src='https://my.spline.design/devicecloudcopy-82803346673c098e4e4edd61dd7eb30d/' frameborder='0' width='100%' height='100%'></iframe>
+          <iframe title="sani" src='https://my.spline.design/devicecloudcopy-82803346673c098e4e4edd61dd7eb30d/' frameborder='0' width='100%' height='100%'></iframe>
       </div>
           </ParallaxLayer>
           <ParallaxLayer offset={1.47} speed={0.5}>
