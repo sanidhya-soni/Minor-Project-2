@@ -1,0 +1,36 @@
+pipeline {
+  agent any
+  
+  stages {
+    stage('Build') {
+      steps {
+        // Checkout your React project from version control
+        checkout scm
+        
+        // Install project dependencies
+        sh 'npm install'
+        
+        // Build the React app
+        sh 'npm run build'
+      }
+    }
+    
+    stage('Deploy to S3') {
+      steps {
+        withCredentials([[
+            $class: 'AmazonWebServicesCredentialsBinding',
+            credentialsId: 'AlmostAdminAWS',
+            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+        ]]) {
+            // Configure AWS CLI credentials using the Jenkins AWS credentials plugin
+            sh 'aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID'
+            sh 'aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY'
+            
+            // Upload the build artifacts to S3
+            sh 'aws s3 sync build/ s3://upes-colab'
+        }
+      }
+    }
+  }
+}
